@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         board.fill("");
         cells.forEach(cell => (cell.textContent = ""));
         currentPlayer = player1;
-        currentSymbol = "X";
+        currentSymbol = "x";
         messageDiv.textContent = `${currentPlayer}, you're up!`;
     });
 });
