@@ -1,1 +1,69 @@
-/*  your css code here. If applicable */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the game */
+.container {
+    margin-top: 50px;
+}
+
+/* Form Styles */
+#player-form {
+    background: #f4f4f4;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    font-size: 16px;
+    width: 80%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Tic-Tac-Toe Board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    width: max-content;
+}
+
+/* Individual Cells */
+.cell {
+    background: #ddd;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cell:hover {
+    background: #ccc;
+}
+
+/* Message Display */
+.message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
