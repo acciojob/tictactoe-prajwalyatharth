@@ -1,20 +1,21 @@
-document.getElementById("submit").addEventListener("click", function () {
-    let player1 = document.getElementById("player-1").value.trim();
-    let player2 = document.getElementById("player-2").value.trim();
+document.getElementById("submit").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevents form refresh
 
-    if (player1 === "" || player2 === "") {
-        alert("Please enter names for both players!");
+    let player1 = document.getElementById("player1").value.trim();
+    let player2 = document.getElementById("player2").value.trim();
+
+    if (!player1 || !player2) {
+        alert("Please enter both player names.");
         return;
     }
 
-    sessionStorage.setItem("player1", player1);
-    sessionStorage.setItem("player2", player2);
-
     document.getElementById("player-form").style.display = "none";
-    document.getElementById("game-section").style.display = "block";
+    document.getElementById("game-board").style.display = "block";
 
-    startGame();
+	startGame();
+	
 });
+
 
 function startGame() {
     let board = ["", "", "", "", "", "", "", "", ""];
