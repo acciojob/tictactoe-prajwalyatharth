@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let player1, player2, currentPlayer, currentSymbol;
     let board = ["", "", "", "", "", "", "", "", ""];
-    
+    let gameOver = false;  // Prevents extra clicks after game ends
+
     // Start Game
     submitButton.addEventListener("click", () => {
         player1 = document.getElementById("player1").value.trim();
@@ -30,19 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handle Cell Click
     cells.forEach(cell => {
         cell.addEventListener("click", () => {
-            const cellIndex = cell.id - 1;
+            if (gameOver) return;  // Prevents moves after the game ends
 
-            if (board[cellIndex] === "" && !checkWinner()) {
+            const cellIndex = parseInt(cell.id) - 1;
+
+            if (board[cellIndex] === "") {
                 board[cellIndex] = currentSymbol;
                 cell.textContent = currentSymbol;
 
                 if (checkWinner()) {
                     messageDiv.textContent = `${currentPlayer}, congratulations! You won!`;
+                    gameOver = true;
                     return;
                 }
 
                 if (board.every(cell => cell !== "")) {
                     messageDiv.textContent = "It's a draw!";
+                    gameOver = true;
                     return;
                 }
 
@@ -71,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reset Game
     resetButton.addEventListener("click", () => {
         board.fill("");
+        gameOver = false;
         cells.forEach(cell => (cell.textContent = ""));
         currentPlayer = player1;
         currentSymbol = "x";
