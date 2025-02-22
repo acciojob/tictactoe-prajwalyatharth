@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 cell.textContent = currentSymbol;
 
                 if (checkWinner()) {
-                    messageDiv.textContent = `${currentPlayer}, congratulations You won!`;
+                    messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
                     gameOver = true;
                     return;
                 }
