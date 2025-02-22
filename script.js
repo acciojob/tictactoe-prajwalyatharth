@@ -23,14 +23,17 @@ function startGame(player1, player2) {
                 board[index] = currentSymbol;
                 this.innerText = currentSymbol;
                 this.setAttribute("data-value", currentSymbol); // Ensure attribute updates for Cypress
-                if (checkWin(board, currentSymbol)) {
-                    document.querySelector('.message').textContent = `${currentPlayer}, congratulations you won!`;
-                    disableBoard();
-                } else {
-                    currentPlayer = currentPlayer === player1 ? player2 : player1;
-                    currentSymbol = currentSymbol === 'X' ? 'O' : 'X';
-                    document.querySelector('.message').textContent = `${currentPlayer}, you're up!`;
-                }
+                
+                setTimeout(() => { // Ensure UI updates before Cypress checks
+                    if (checkWin(board, currentSymbol)) {
+                        document.querySelector('.message').textContent = `${currentPlayer}, congratulations you won!`;
+                        disableBoard();
+                    } else {
+                        currentPlayer = currentPlayer === player1 ? player2 : player1;
+                        currentSymbol = currentSymbol === 'X' ? 'O' : 'X';
+                        document.querySelector('.message').textContent = `${currentPlayer}, you're up!`;
+                    }
+                }, 50); // Short delay to ensure UI updates
             }
         });
     });
