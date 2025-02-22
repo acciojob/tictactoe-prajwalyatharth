@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         currentPlayer = player1;
-        currentSymbol = "X";
+        currentSymbol = "x";
         messageDiv.textContent = `${currentPlayer}, you're up!`;
 
         playerForm.classList.add("hidden");
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Switch Players
                 currentPlayer = currentPlayer === player1 ? player2 : player1;
-                currentSymbol = currentSymbol === "X" ? "O" : "X";
+                currentSymbol = currentSymbol === "x" ? "o" : "x";
                 messageDiv.textContent = `${currentPlayer}, you're up!`;
             }
         });
