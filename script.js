@@ -21,7 +21,8 @@ function startGame(player1, player2) {
             let index = parseInt(this.id) - 1;
             if (!board[index]) {
                 board[index] = currentSymbol;
-                this.textContent = currentSymbol;
+                this.innerText = currentSymbol;
+                this.setAttribute("data-value", currentSymbol); // Ensure attribute updates for Cypress
                 if (checkWin(board, currentSymbol)) {
                     document.querySelector('.message').textContent = `${currentPlayer}, congratulations you won!`;
                     disableBoard();
